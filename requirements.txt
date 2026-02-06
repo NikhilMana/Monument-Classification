@@ -1,0 +1,25 @@
+# Monument Classification Pipeline Requirements
+# Optimized for EfficientNetV2-S with advanced training
+
+# Core ML
+tensorflow>=2.13.0
+keras>=2.13.0
+
+# Data Processing
+numpy>=1.24.0
+Pillow>=10.0.0
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Kaggle Dataset
+kagglehub>=0.1.0
+
+# API Server
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Optional: Memory optimization
+# tensorflow-model-optimization>=0.7.0

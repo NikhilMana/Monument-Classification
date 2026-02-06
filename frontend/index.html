@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonuVision AI | Monument Recognition</title>
+    <meta name="description" content="AI-powered Indian Monument Recognition with stunning 3D visuals">
+    
+    <!-- Google Fonts - Brutalist Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Three.js Canvas Container -->
+    <div id="three-container"></div>
+    
+    <!-- Main App Container -->
+    <div class="app-container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="logo-container">
+                <span class="logo-icon">🏛️</span>
+                <h1 class="logo-text">Monu<span class="gradient-text">Vision</span></h1>
+            </div>
+            <p class="tagline">AI-Powered Monument Recognition</p>
+        </header>
+        
+        <!-- Upload Section -->
+        <main class="main-content">
+            <div class="upload-zone" id="upload-zone">
+                <div class="upload-inner">
+                    <div class="upload-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3 class="upload-title">Drop your monument image here</h3>
+                    <p class="upload-subtitle">or <span class="browse-btn">browse files</span></p>
+                    <p class="upload-hint">Supports JPG, PNG, WebP</p>
+                </div>
+                <input type="file" id="file-input" accept="image/*" hidden>
+            </div>
+            
+            <!-- Image Preview -->
+            <div class="preview-container" id="preview-container" style="display: none;">
+                <div class="preview-card">
+                    <img id="preview-image" src="" alt="Preview">
+                    <button class="clear-btn" id="clear-btn">×</button>
+                </div>
+            </div>
+            
+            <!-- Loading State -->
+            <div class="loading-container" id="loading-container" style="display: none;">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+                <p class="loading-text">Analyzing monument...</p>
+            </div>
+            
+            <!-- Results Section -->
+            <div class="results-container" id="results-container" style="display: none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-badge">AI Prediction</span>
+                        <h2 class="result-title" id="result-title">Taj Mahal</h2>
+                    </div>
+                    <div class="confidence-container">
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidence-fill"></div>
+                        </div>
+                        <span class="confidence-value" id="confidence-value">98.5%</span>
+                    </div>
+                    <div class="predictions-list" id="predictions-list">
+                        <!-- Predictions will be inserted here -->
+                    </div>
+                    <button class="try-again-btn" id="try-again-btn">
+                        <span>Try Another Image</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6"/>
+                            <path d="M1 20v-6h6"/>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by EfficientNetV2 • Built with ❤️</p>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
