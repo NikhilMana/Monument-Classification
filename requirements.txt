@@ -21,5 +21,8 @@ kagglehub>=0.1.0
 flask>=2.3.0
 flask-cors>=4.0.0
 
+# Streamlit Deployment
+streamlit>=1.28.0
+
 # Optional: Memory optimization
 # tensorflow-model-optimization>=0.7.0
