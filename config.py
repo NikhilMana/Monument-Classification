@@ -11,10 +11,27 @@ import kagglehub
 # ============================================================================
 
 # Download dataset and get path
-DATASET_PATH = kagglehub.dataset_download("danushkumarv/indian-monuments-image-dataset")
-DATA_DIR = os.path.join(DATASET_PATH, "Indian-monuments", "images")
-TRAIN_DIR = os.path.join(DATA_DIR, "train")
-TEST_DIR = os.path.join(DATA_DIR, "test")
+# Refactored to prevent auto-download on import
+def get_dataset_path():
+    try:
+        path = kagglehub.dataset_download("danushkumarv/indian-monuments-image-dataset")
+        return path
+    except Exception as e:
+        print(f"Warning: Could not download dataset: {e}")
+        return None
+
+DATASET_PATH = get_dataset_path() if os.environ.get("DOWNLOAD_DATASET", "False").lower() == "true" else None
+
+if DATASET_PATH:
+    DATA_DIR = os.path.join(DATASET_PATH, "Indian-monuments", "images")
+    TRAIN_DIR = os.path.join(DATA_DIR, "train")
+    TEST_DIR = os.path.join(DATA_DIR, "test")
+else:
+    # Default paths or None
+    DATA_DIR = None
+    TRAIN_DIR = None
+    TEST_DIR = None
+
 
 # ============================================================================
 # MODEL CONFIGURATION
@@ -95,7 +112,7 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 # CLASS NAMES
 # ============================================================================
 
-CLASS_NAMES = sorted(os.listdir(TRAIN_DIR)) if os.path.exists(TRAIN_DIR) else []
+CLASS_NAMES = sorted(os.listdir(TRAIN_DIR)) if (TRAIN_DIR and os.path.exists(TRAIN_DIR)) else []
 
 # ============================================================================
 # DISPLAY CONFIGURATION

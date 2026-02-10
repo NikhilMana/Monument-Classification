@@ -11,11 +11,10 @@ venv/
 dist/
 build/
 
-# Large model files (too big for GitHub)
-models/*.keras
-models/*.h5
-*.keras
-*.h5
+# Large model files (Tracked via Git LFS)
+# models/*.keras (Removed to allow LFS tracking)
+# models/*.h5 (Removed to allow LFS tracking)
+
 
 # Training artifacts
 logs/
